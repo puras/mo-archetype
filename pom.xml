@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>mo-boot-parent</artifactId>
+        <groupId>me.puras.mo</groupId>
+        <version>0.6.0</version>
+    </parent>
+
+    <groupId>me.puras.mo</groupId>
+    <artifactId>mo-archetype</artifactId>
+    <version>0.1.0</version>
+
+
+    <name>mo-archetype</name>
+    <description>Mo Archetype</description>
+
+    <properties>
+        <java.version>11</java.version>
+    </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>mid-releases</id>
+            <name>mid-releases</name>
+            <url>http://10.10.126.195:8000/repository/mid-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>mid-snapshots</id>
+            <name>mid-snapshots</name>
+            <url>http://10.10.126.195:8000/repository/mid-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <defaultGoal>compile</defaultGoal>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+            </resource>
+            <resource>
+                <!-- This include everything else under src/main/java directory -->
+                <directory>${basedir}/src/main/java</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-archetype-plugin</artifactId>
+                <version>3.0.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

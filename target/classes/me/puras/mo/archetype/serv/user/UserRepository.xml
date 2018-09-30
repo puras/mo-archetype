@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.puras.mo.archetype.serv.user.UserRepository">
+    <select id="findAll" resultType="User">
+        <include refid="select" />
+        where <include refid="common.no_del" />
+        order by id desc
+        <include refid="common.limit" />
+    </select>
+
+    <select id="countAll" resultType="Long">
+        <include refid="common.count" />
+        <include refid="table_name" />
+        where <include refid="common.no_del" />
+    </select>
+
+    <select id="findById" parameterType="Long" resultType="User">
+        <include refid="select" />
+        where ID=#{id} and <include refid="common.no_del" />
+    </select>
+
+    <insert id="create" parameterType="User" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        insert into <include refid="table_name" />
+        (`name`, avatar, deleted, created_at, updated_at)
+        values
+        (#{name}, #{avatar}, #{deleted}, #{createdAt}, #{updatedAt})
+    </insert>
+
+    <update id="update" parameterType="User">
+        update <include refid="table_name" /> set
+        `name`=#{name},
+        avatar=#{avatar},
+        updated_at=#{updatedAt}
+        where id=#{id}
+    </update>
+
+    <update id="delete" parameterType="Long">
+        update <include refid="table_name" /> set
+        <include refid="common.del" />
+        WHERE id=#{id}
+    </update>
+
+    <sql id="select">
+        select id,
+        `name`,
+        avatar,
+        deleted,
+        created_at as createdAt,
+        updated_at as updatedAt
+        from <include refid="table_name" />
+    </sql>
+
+    <sql id="table_name">
+        mp_user
+    </sql>
+</mapper>

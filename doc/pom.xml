@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>me.puras.mo</groupId>
+  <artifactId>mo-archetype</artifactId>
+  <version>0.1.0</version>
+  <packaging>maven-archetype</packaging>
+
+  <name>mo-archetype-archetype</name>
+  <description>Mo Archetype</description>
+
+  <distributionManagement>
+    <repository>
+      <id>mid-releases</id>
+      <name>mid-releases</name>
+      <url>http://10.10.126.195:8000/repository/mid-releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>mid-snapshots</id>
+      <name>mid-snapshots</name>
+      <url>http://10.10.126.195:8000/repository/mid-snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <build>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.archetype</groupId>
+        <artifactId>archetype-packaging</artifactId>
+        <version>3.0.1</version>
+      </extension>
+    </extensions>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-archetype-plugin</artifactId>
+          <version>3.0.1</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <url>https://projects.spring.io/spring-boot/#/spring-boot-starter-parent/mo-boot-parent/mo-archetype</url>
+
+  <developers>
+    <developer>
+      <name>Pivotal</name>
+      <email>info@pivotal.io</email>
+      <organization>Pivotal Software, Inc.</organization>
+      <organizationUrl>http://www.spring.io</organizationUrl>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <url>https://github.com/spring-projects/spring-boot/spring-boot-starter-parent/mo-boot-parent/mo-archetype</url>
+  </scm>
+</project>
